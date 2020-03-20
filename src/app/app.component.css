@@ -1,0 +1,16 @@
+table.lista{
+  background: lemonchiffon;
+  border: gray;
+}
+td.listaBo{
+  color: darkblue;
+}
+button.estadoNo{
+  color:red;
+}
+table.estado{
+  background: lightgray;
+}
+button.estadoSi{
+  color:darkblue;
+}

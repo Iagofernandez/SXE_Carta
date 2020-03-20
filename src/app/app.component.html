@@ -1,0 +1,67 @@
+<div class="loginDiv" *ngIf="( auth.user | async) as user; else login">{{user.email}} - {{user.uid}}
+  <br/><br/>
+  <button class="btn btn-secondary" (click)="auth.logout()">OUT</button>
+  <br/><br/>
+</div>
+
+
+<ng-template #login>
+  <div class="loginDiv">
+
+    <input type="text" name = "email"
+           placeholder=" escribe tu email"
+           [(ngModel)]="auth.email" />
+
+    <br></br>
+
+
+    <input type="pass" name ="pass"
+           placeholder="Escribe tu contraseña"
+           [(ngModel)]="auth.pass"/>
+    <br/><br/>
+
+    <button class="btn btn-primary" (click)="auth.loging()">
+      <i class="fab fa-github"></i>
+      Email Login</button>
+    <br/><br/>
+    <button class="btn btn-danger" (click)="auth.gloging()">
+      <i class="fab fa-google"></i>
+      Google Login
+    </button>
+  </div>
+</ng-template>
+<h1>Lista de la compra</h1>
+<table style="width: 100%; border: 1px solid black;">
+  <tr>
+    <th>Comprado</th>
+    <th>Producto</th>
+
+  </tr>
+  <tr *ngFor="let carta of cartas; index as i;">
+
+    <td align="center">
+      <input type="radio" name="carta-{{i}}" [(ngModel)]="carta.leido" [value]=true> Si
+      <input type="radio" name="carta-{{i}}" [(ngModel)]="carta.leido" [value]=false> No
+    </td>
+
+    <td align="center">{{carta.cartalist}}</td>
+    <td align="center">{{carta.descripcion}}</td>
+  </tr>
+</table>
+<h2>Estado</h2>
+<table style="width: 100%; border: 1px solid black;">
+  <tr>
+    <th> Comprado </th>
+    <th> Por comprar </th>
+  </tr>
+  <tr *ngFor="let carta of cartas; index as i">
+    <td *ngIf="cartas[i].leido" align="center">
+      {{carta.leido}}
+
+    </td>
+    <td></td>
+    <td *ngIf="!cartas[i].leido" align="center">
+      {{carta.leido}}
+    </td>
+  </tr>
+</table>
